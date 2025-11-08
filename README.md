@@ -43,8 +43,8 @@ After downloading, you must **convert these FASTA files into vectorized tensor r
 ---
 
 ## ⚙️ Environment Setup
-
-Refer to the [`environment_setup`](./environment_setup) directory for installation and environment configuration instructions.  
+To run the codes in finetuning_enformer, refer to the [`environment_setup`](./environment_setup) directory for installation and environment configuration instructions.
+  
 ## 🚀 Running Experiments
 The main fine-tuning experiments are located in the finetuning_enformer directory.
 To launch all experiments in the suite simultaneously:
