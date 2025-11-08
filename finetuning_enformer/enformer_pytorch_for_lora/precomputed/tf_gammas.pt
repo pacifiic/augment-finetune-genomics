@@ -1,0 +1,4 @@
+<!--?Load the file from the path-->
+<!--?https://github.com/lucidrains/enformer-pytorch/blob/main/enformer_pytorch/precomputed/tf_gammas.pt-->
+<!--?and paste it here.-->
+# equivalent to https://github.com/lucidrains/enformer-pytorch/blob/main/enformer_pytorch/precomputed/tf_gammas.pt
