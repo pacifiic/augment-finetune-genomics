@@ -32,7 +32,7 @@ def main():
     use_lora = not args.no_lora
 
     if args.suite:
-        run_experiment_suite(local_rank=args.local_rank, seed=args.seed)
+        run_experiment_suite(local_rank=args.local_rank)
     else:
         train_model_wrapper(
             local_rank=args.local_rank,
