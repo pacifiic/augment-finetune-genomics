@@ -8,10 +8,10 @@ import deepspeed
 
 from . import config
 from .utils import set_seed_all, log_trainable_params
-from .dataloaders import create_virtual_pair_loader, create_real_regression_loader, create_real_pair_loader     #, create_virtual_regression_loader
+from .dataloaders import create_virtual_pair_loader, create_real_regression_loader, create_real_pair_loader, create_virtual_regression_loader
 from .model import build_dual_enformer
 from .checkpoints import load_latest_checkpoint, resolve_resume_dir_across_ranks
-from .train_loops import train_virtual_pairwise_loop, train_real_pairwise_loop, train_real_regression_loop
+from .train_loops import train_virtual_pairwise_loop, train_real_pairwise_loop, train_real_regression_loop, train_virtual_regression_loop
 import pandas as pd
 
 
@@ -46,20 +46,18 @@ def train_model_wrapper(local_rank: int,
     real_beta_params_df    = pd.read_csv(config.REAL_BETA_PARAMS_PATH);    real_beta_params_df.set_index("gene", inplace=True)
 
     if training_data.lower() == "virtual":
-        # if objective.lower() == "pairwise":
-        #     train_loader = create_virtual_pair_loader(config.TRAIN_GENES_FILE, config.VIRTUAL_VECTOR_DIR,
-        #                                            batch_size=train_batch_size, training=True, pairs_per_epoch=pairs_per_epoch)
-        #     valid_loader = create_real_regression_loader(config.TRAIN_GENES_FILE, config.VALID_SAMPLES_FILE, data_dir,
-        #                                       batch_size=eval_batch_size, training=False)
-        # else:
-        #     train_loader = create_virtual_regression_loader(config.TRAIN_GENES_FILE, config.VIRTUAL_VECTOR_DIR,
-        #                                       batch_size=train_batch_size, training=True, pairs_per_epoch=pairs_per_epoch)
-        #     valid_loader = create_real_regression_loader(config.TRAIN_GENES_FILE, config.VALID_SAMPLES_FILE, data_dir,
-        #                                       batch_size=eval_batch_size, training=False)
-        train_loader = create_virtual_pair_loader(config.TRAIN_GENES_FILE, config.VIRTUAL_VECTOR_DIR, config.PSEUDO_LABEL_PATH,
-                                             batch_size=train_batch_size, training=True, pairs_per_epoch=pairs_per_epoch)
-        valid_loader = create_real_regression_loader(config.TRAIN_GENES_FILE, config.VALID_SAMPLES_FILE, config.PROCESSED_VECTOR_DIR,
-                                          batch_size=eval_batch_size, training=False)
+        data_dir = real_vector_dir or config.PROCESSED_VECTOR_DIR
+        if objective.lower() == "pairwise":
+            train_loader = create_virtual_pair_loader(config.TRAIN_GENES_FILE, config.VIRTUAL_VECTOR_DIR, config.PSEUDO_LABEL_PATH,
+                                                   batch_size=train_batch_size, training=True, pairs_per_epoch=pairs_per_epoch)
+            valid_loader = create_real_regression_loader(config.TRAIN_GENES_FILE, config.VALID_SAMPLES_FILE, data_dir,
+                                              batch_size=eval_batch_size, training=False)
+        else:
+            train_loader = create_virtual_regression_loader(config.TRAIN_GENES_FILE, config.VIRTUAL_VECTOR_DIR, config.PSEUDO_LABEL_PATH,
+                                              batch_size=train_batch_size, training=True, pairs_per_epoch=pairs_per_epoch)
+            valid_loader = create_real_regression_loader(config.TRAIN_GENES_FILE, config.VALID_SAMPLES_FILE, data_dir,
+                                              batch_size=eval_batch_size, training=False)
+       
     elif training_data.lower() == "real":
         data_dir = real_vector_dir or config.PROCESSED_VECTOR_DIR
         if objective.lower() == "pairwise":
@@ -119,8 +117,12 @@ def train_model_wrapper(local_rank: int,
             print(f"[WARN] No checkpoint_* found under: {load_from_root}")
 
     if training_data.lower() == "virtual":
-        train_virtual_pairwise_loop(model_engine, train_loader, valid_loader, device, num_epochs, save_root_dir,
+        if objective.lower() == "pairwise":
+            train_virtual_pairwise_loop(model_engine, train_loader, valid_loader, device, num_epochs, save_root_dir,
                            virtual_beta_params_df=virtual_beta_params_df, start_epoch=start_epoch, seed=seed, dist=dist)
+        else:
+            train_virtual_regression_loop(model_engine, train_loader, valid_loader, device, num_epochs, save_root_dir,
+                            loss_type=real_loss_type, start_epoch=start_epoch, seed=seed, dist=dist)
     else:
         if objective.lower() == "pairwise":
             train_real_pairwise_loop(model_engine, train_loader, valid_loader, device, num_epochs, save_root_dir,
