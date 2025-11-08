@@ -72,37 +72,37 @@ class RealPairDataset(Dataset):
         b1, b2, yB = self._load_pair(s2, g)
         return a1, a2, yA, b1, b2, yB, g
 
-# class VirtualRegressionDataset(Dataset):
-#     def __init__(self, genes_file, virtual_vector_dir, pseudo_label_path,
-#                  n_virtual_samples=1000, samples_prefix="sample",
-#                  pairs_per_epoch=None):
-#         with open(genes_file, "r") as f:
-#             self.genes = [line.strip() for line in f if line.strip()]
-#
-#         self.samples = [f"{samples_prefix}{i}" for i in range(1, n_virtual_samples + 1)]
-#         self.vector_dir = virtual_vector_dir
-#
-#         self.pseudo_df = pd.read_csv(pseudo_label_path, sep="\t")
-#         self.pseudo_df.set_index(["IID", "hap"], inplace=True)
-#
-#         if pairs_per_epoch is None:
-#             pairs_per_epoch = european_individual_count * len(self.genes) * 2
-#         self.pairs_per_epoch = pairs_per_epoch
-#
-#     def __len__(self):
-#         return self.pairs_per_epoch
-#
-#     def __getitem__(self, idx):
-#         g = random.choice(self.genes)
-#
-#         s = random.choice(self.samples)
-#         h = random.randint(1, 2)
-#
-#         f = f"{self.vector_dir}/{s}/{g}.{h}pIu.pt"
-#         seq = safe_load_tensor(f)
-#         y = float(self.pseudo_df.loc[(s, h), g])
-#
-#         return seq, torch.tensor(y, dtype=torch.float32), g
+class VirtualRegressionDataset(Dataset):
+    def __init__(self, genes_file, virtual_vector_dir, pseudo_label_path,
+                 n_virtual_samples=1000, samples_prefix="sample",
+                 pairs_per_epoch=None):
+        with open(genes_file, "r") as f:
+            self.genes = [line.strip() for line in f if line.strip()]
+
+        self.samples = [f"{samples_prefix}{i}" for i in range(1, n_virtual_samples + 1)]
+        self.vector_dir = virtual_vector_dir
+
+        self.pseudo_df = pd.read_csv(pseudo_label_path, sep="\t")
+        self.pseudo_df.set_index(["IID", "hap"], inplace=True)
+
+        if pairs_per_epoch is None:
+            pairs_per_epoch = config.EUROPEAN_INDIVIDUAL_COUNT * len(self.genes) * 2
+        self.pairs_per_epoch = pairs_per_epoch
+
+    def __len__(self):
+        return self.pairs_per_epoch
+
+    def __getitem__(self, idx):
+        g = random.choice(self.genes)
+
+        s = random.choice(self.samples)
+        h = random.randint(1, 2)
+
+        f = f"{self.vector_dir}/{s}/{g}.{h}pIu.pt"
+        seq = safe_load_tensor(f)
+        y = float(self.pseudo_df.loc[(s, h), g])
+
+        return seq, torch.tensor(y, dtype=torch.float32), g
 
 class VirtualPairDataset(Dataset):
     def __init__(self, genes_file: str, virtual_vector_dir: str, pseudo_label_path: str,
