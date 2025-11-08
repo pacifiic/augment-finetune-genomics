@@ -18,7 +18,7 @@ from .checkpoints import save_checkpoint
 #     Batches from VirtualRegressionDataset: (seq, y, gene).
 #     Feeds the same seq to both towers: model_engine(seq, seq).
 #     """
-#     # loss 선택: SMAPE or MSE
+#
 #     criterion = smape_loss if loss_type.lower() == "smape" else (
 #         lambda o, t: F.mse_loss(*_flatten_pred_target(o, t))
 #     )
@@ -37,7 +37,7 @@ from .checkpoints import save_checkpoint
 #         running_loss = 0.0
 # 
 #         for step, batch in enumerate(train_loader):
-#             # 배치: (seq, y, gene)
+#
 #             seq, y, _gene = batch
 #             seq = seq.to(device).to(torch.bfloat16)
 #             y   = y.to(device).float()
