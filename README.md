@@ -46,6 +46,8 @@ After downloading, you must **convert these FASTA files into vectorized tensor r
 To run the codes in finetuning_enformer, refer to the [`environment_setup`](./environment_setup) directory for installation and environment configuration instructions.
   
 ## 🚀 Running Experiments
+First, download https://github.com/lucidrains/enformer-pytorch/blob/main/enformer_pytorch/precomputed/tf_gammas.pt and place it in the path finetuning_enformer/enformer_pytorch_for_lora/precomputed/tf_gammas.pt.
+
 The main fine-tuning experiments are located in the finetuning_enformer directory.
 To launch all experiments in the suite simultaneously:
 ```bash
