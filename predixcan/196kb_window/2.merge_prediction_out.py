@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-input_dir = "/path/to/2.preprocessing_after_prediction/pred_196608_cleaned"
+input_dir = "/path/to/1.preprocessing_after_prediction/pred_196608_cleaned"
 output_file = "/path/to/merged_pred_196608_cleaned.csv"
 
 all_files = [f for f in os.listdir(input_dir) if f.endswith(".txt")]

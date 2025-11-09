@@ -4,12 +4,12 @@ import pandas as pd
 import numpy as np
 from scipy.stats import pearsonr, spearmanr
 
-PREDIXCAN_PATH = "/media/leelabsg-storage0/moonwon/prediXcanDB/output/predicted_expression_chr22_var_im_1016_retry_for_check.txt"
-TARGETS_PATH   = "/media/leelabsg-storage0/moonwon/recomb/chr22_csv_directory/targets_df.csv"
-GENES_FILE     = "/media/leelabsg-storage0/moonwon/recomb/chr22_csv_directory/genes_file.txt"
-VALID_SAMPLES  = "/media/leelabsg-storage0/moonwon/3.valid_samples_file_42.txt"
-TEST_SAMPLES   = "/media/leelabsg-storage0/moonwon/4.test_samples_file_84.txt"
-OUTPUT_DIR     = "/media/leelabsg-storage0/moonwon"
+PREDIXCAN_PATH = "/path/to/0.run_predixcan.sh/output/predicted_expression.txt"
+TARGETS_PATH   = "/path/to/data/6.geuvadis_peer_normalized_filtered.csv"
+GENES_FILE     = "/path/to/data/7.gene_id_chr22.txt"
+VALID_SAMPLES  = "/path/to/data/3.valid_samples_file_42.txt"
+TEST_SAMPLES   = "/path/to/data/4.test_samples_file_84.txt"
+OUTPUT_DIR     = "/path/to/out_directory"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # ---- Load PrediXcan ----
