@@ -61,12 +61,12 @@ Real-only regression
 Real–virtual alternating fine-tuning
 DPO (Direct Preference Optimization) mixed objectives
 ## 📊 Evaluation
-They compute per-gene Pearson and Spearman correlations between predicted and observed expression values across individuals.
-Each experiment’s best-performing checkpoint (based on validation Pearson correlation) is automatically selected for testing.
 After completing a training experiment, you can evaluate the model on the test set by running:
 ```bash
 python evaluation_on_testset.py
 ```
+This script loads the best-performing checkpoint (selected based on validation Pearson correlation), computes per-gene Pearson and Spearman correlations between predicted and observed expression values across individuals, and outputs both gene-level and summary metrics.
+
 
 ## 📄 Citation & Licenses
 
