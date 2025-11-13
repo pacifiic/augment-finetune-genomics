@@ -61,9 +61,12 @@ Real-only regression
 Real–virtual alternating fine-tuning
 DPO (Direct Preference Optimization) mixed objectives
 ## 📊 Evaluation
-Evaluation scripts are located in the evaluation directory.
 They compute per-gene Pearson and Spearman correlations between predicted and observed expression values across individuals.
 Each experiment’s best-performing checkpoint (based on validation Pearson correlation) is automatically selected for testing.
+After completing a training experiment, you can evaluate the model on the test set by running:
+```bash
+python evaluation_on_testset.py
+```
 
 ## 📄 Citation & Licenses
 
