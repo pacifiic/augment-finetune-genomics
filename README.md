@@ -2,7 +2,7 @@
 
 This repository contains the official implementation for the study:
 
-> **Preference-Based Fine-Tuning of Genomic Sequence Models for Personal Expression Prediction with Data Augmentation
+> **Preference-Based Fine-Tuning of Genomic Sequence Models for Personal Expression Prediction with Data Augmentation**
 
 It provides preprocessing pipelines, training scripts, and evaluation tools for fine-tuning Enformer-based architectures on both real and simulated genomic data.
 
