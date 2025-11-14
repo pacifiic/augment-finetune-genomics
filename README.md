@@ -57,9 +57,10 @@ deepspeed --num_nodes 1 --num_gpus 4 \
     --module train_enformer.main -- --suite
 ```
 This command automatically executes all experiment phases, including:
-Real-only regression
-Real–virtual alternating fine-tuning
-DPO (Direct Preference Optimization) mixed objectives
+• Real-only regression
+• Real–synthetic alternating fine-tuning
+• Real-only fine-tuning combining regression and Bradley–Terry preference objectives
+
 ## 📊 Evaluation
 After completing a training experiment, you can evaluate the model on the test set by running:
 ```bash
