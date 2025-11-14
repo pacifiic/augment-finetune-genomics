@@ -58,9 +58,13 @@ deepspeed --num_nodes 1 --num_gpus 4 \
 ```
 Environment variables MASTER_ADDR and MASTER_PORT can be specified manually if needed
 (e.g., when multiple distributed jobs are running on the same node).
+
 This command automatically executes all experiment phases, including:
+
 • Real-only regression
+
 • Real–synthetic alternating fine-tuning
+
 • Real-only fine-tuning combining regression and Bradley–Terry preference objectives
 
 ## 📊 Evaluation
