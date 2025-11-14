@@ -49,13 +49,15 @@ To run the codes in finetuning_enformer, refer to the [`environment_setup`](./en
 First, download https://github.com/lucidrains/enformer-pytorch/blob/main/enformer_pytorch/precomputed/tf_gammas.pt and place it in the path finetuning_enformer/enformer_pytorch_for_lora/precomputed/tf_gammas.pt.
 
 The main fine-tuning experiments are located in the finetuning_enformer directory.
-To launch all experiments in the suite simultaneously:
+To launch all experiments in the suite simultaneously (as run in our study using 4×H100 GPUs):
 ```bash
 deepspeed --num_nodes 1 --num_gpus 4 \
     --master_addr ${MASTER_ADDR} \
     --master_port ${MASTER_PORT} \
     --module train_enformer.main -- --suite
 ```
+Environment variables MASTER_ADDR and MASTER_PORT can be specified manually if needed
+(e.g., when multiple distributed jobs are running on the same node).
 This command automatically executes all experiment phases, including:
 • Real-only regression
 • Real–synthetic alternating fine-tuning
