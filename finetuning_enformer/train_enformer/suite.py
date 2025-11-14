@@ -7,7 +7,7 @@ from . import config
 
 
 def run_experiment_suite(local_rank: int):
-    base_root = "/path/to/checkpoint/dir"
+    base_root = config.DEFAULT_SAVE_ROOT_DIR
     seeds = [42, 47, 52]
 
     for seed in seeds:
