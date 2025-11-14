@@ -68,8 +68,8 @@ In particular, the fine-tuning pipeline requires the outputs of:
 data_preprocessing/1.preparing_real_sequences/3.fasta_to_vector.py
 data_preprocessing/2.preparing_virtual_sequences/9.fasta_to_vector.py
 ```
-These scripts convert real and virtual personal-genome FASTA files into vectorized
-tensor representations used for training.
+
+
 To launch all experiments in the suite simultaneously (as run in our study on 4×H100 GPUs):
 ```bash
 deepspeed --num_nodes 1 --num_gpus 4 \
