@@ -59,8 +59,8 @@ Before launching experiments, please update all dataset and checkpoint paths in:
 ```bash
 train_enformer/config.py
 ```
-This file contains clearly organized fields for real-data paths, synthetic-data paths,
-and output directory locations. You must replace these with paths valid for your system.
+This file contains clearly organized fields for all file paths required during training,
+including real-data inputs, synthetic-data inputs. You must replace these with paths valid for your system.
 All required input files are located in the data/ directory, making it easy to match
 each field in config.py with the corresponding dataset.
 In particular, the fine-tuning pipeline requires the outputs of:
