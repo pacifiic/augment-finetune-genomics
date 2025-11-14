@@ -41,7 +41,7 @@ def run_experiment_suite(local_rank: int):
             "seed": seed,
         }
         exp2_2 = {
-            "name": f"exp02_virtual_dpo5_seed{seed}",
+            "name": f"exp02_virtual_bt5_seed{seed}",
             "training_data": "virtual",
             "use_lora": True,
             "lora_rank": 32,
@@ -65,7 +65,7 @@ def run_experiment_suite(local_rank: int):
             "seed": seed,
         }
         exp2_4 = {
-            "name": f"exp02_virtual_dpo5_2_seed{seed}",
+            "name": f"exp02_virtual_bt5_2_seed{seed}",
             "training_data": "virtual",
             "use_lora": True,
             "lora_rank": 32,
@@ -92,7 +92,7 @@ def run_experiment_suite(local_rank: int):
         # ==== Experiment 3 ====
         exp3_base = os.path.join(base_root, f"exp03_real_only_mix_seed{seed}")
         exp3_2 = {
-            "name": f"exp03_real_dpo5_seed{seed}",
+            "name": f"exp03_real_bt5_seed{seed}",
             "training_data": "real",
             "use_lora": True,
             "lora_rank": 32,
@@ -100,7 +100,7 @@ def run_experiment_suite(local_rank: int):
             "objective": "pairwise",
             "load_opt_states_on_resume": False,
             "load_from_root": exp2_1["save_root"],
-            "save_root": os.path.join(exp3_base, "phase2_real_dpo5"),
+            "save_root": os.path.join(exp3_base, "phase2_real_bt5"),
             "seed": seed,
         }
         exp3_3 = {
@@ -116,7 +116,7 @@ def run_experiment_suite(local_rank: int):
             "seed": seed,
         }
         exp3_4 = {
-            "name": f"exp03_real_dpo5_2_seed{seed}",
+            "name": f"exp03_real_bt5_2_seed{seed}",
             "training_data": "real",
             "use_lora": True,
             "lora_rank": 32,
@@ -124,7 +124,7 @@ def run_experiment_suite(local_rank: int):
             "objective": "pairwise",
             "load_opt_states_on_resume": False,
             "load_from_root": exp3_3["save_root"],
-            "save_root": os.path.join(exp3_base, "phase4_real_dpo5"),
+            "save_root": os.path.join(exp3_base, "phase4_real_bt5"),
             "seed": seed,
         }
         exp3_5 = {
