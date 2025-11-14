@@ -48,18 +48,37 @@ After downloading, you must **convert these FASTA files into vectorized tensor r
 To run the codes in finetuning_enformer, refer to the [`environment_setup`](./environment_setup) directory for installation and environment configuration instructions.
   
 ## 🚀 Running Experiments
-First, download https://github.com/lucidrains/enformer-pytorch/blob/main/enformer_pytorch/precomputed/tf_gammas.pt and place it in the path finetuning_enformer/enformer_pytorch_for_lora/precomputed/tf_gammas.pt.
-
+First, download
+https://github.com/lucidrains/enformer-pytorch/blob/main/enformer_pytorch/precomputed/tf_gammas.pt
+and place it in:
+```bash
+finetuning_enformer/enformer_pytorch_for_lora/precomputed/tf_gammas.pt
+```
 The main fine-tuning experiments are located in the finetuning_enformer directory.
-To launch all experiments in the suite simultaneously (as run in our study using 4×H100 GPUs):
+Before launching experiments, please update all dataset and checkpoint paths in:
+```bash
+train_enformer/config.py
+```
+This file contains clearly organized fields for real-data paths, synthetic-data paths,
+and output directory locations. You must replace these with paths valid for your system.
+All required input files are located in the data/ directory, making it easy to match
+each field in config.py with the corresponding dataset.
+In particular, the fine-tuning pipeline requires the outputs of:
+```bash
+data_preprocessing/1.preparing_real_sequences/3.fasta_to_vector.py
+data_preprocessing/2.preparing_virtual_sequences/9.fasta_to_vector.py
+```
+These scripts convert real and virtual personal-genome FASTA files into vectorized
+tensor representations used for training.
+To launch all experiments in the suite simultaneously (as run in our study on 4×H100 GPUs):
 ```bash
 deepspeed --num_nodes 1 --num_gpus 4 \
     --master_addr ${MASTER_ADDR} \
     --master_port ${MASTER_PORT} \
     --module train_enformer.main -- --suite
 ```
-Environment variables MASTER_ADDR and MASTER_PORT can be specified manually if needed
-(e.g., when multiple distributed jobs are running on the same node).
+Environment variables MASTER_ADDR and MASTER_PORT can be set manually if needed
+(e.g., when multiple distributed jobs are running on the same machine).
 
 This command automatically executes all experiment phases, including:
 
@@ -68,6 +87,7 @@ This command automatically executes all experiment phases, including:
 • Real–synthetic alternating fine-tuning
 
 • Real-only fine-tuning combining regression and Bradley–Terry preference objectives
+
 
 ## 📊 Evaluation
 After completing a training experiment, you can evaluate the model on the test set by running:
