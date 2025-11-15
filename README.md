@@ -44,8 +44,9 @@ After downloading, you must **convert these FASTA files into vectorized tensor r
 python /data_preprocessing/1.preparing_real_sequences/3.fasta_to_vector.py
 python /data_preprocessing/2.preparing_virtual_sequences/9.fasta_to_vector.py
 ```
-Once you have run the scripts above, all other code under /data_preprocessing can be ignored—those scripts are only used to generate the files already provided in the data/ directory.
-You can simply use the existing files in the data/ directory by specifying their paths in train_enformer/config.py.
+Once you have run the scripts above, all other code under `/data_preprocessing` can be ignored—those scripts are only used to generate the files already provided in the `data/` directory.
+You can simply use the existing files in the `data/` directory by specifying their paths in `train_enformer/config.py`.
+
 ---
 
 ## ⚙️ Environment Setup
