@@ -14,7 +14,9 @@ This project introduces a **hybrid fine-tuning framework** that integrates real 
 The method leverages **LoRA-based adapters** for parameter-efficient fine-tuning of Enformer models and uses population-level genetic diversity simulated via `sim1000G` to enhance cross-individual generalization.
 
 ---
-
+## ⚙️ Environment Setup
+To run the codes in finetuning_enformer, refer to the [`environment_setup`](./environment_setup) directory for installation and environment configuration instructions.
+---
 ## 🧬 Data Preparation
 
 All datasets used in this study can be reproduced by following the scripts in the [`data_preprocessing`](./data_preprocessing) directory.
@@ -48,9 +50,6 @@ Once you have run the scripts above, all other code under `/data_preprocessing` 
 You can simply use the existing files in the `data/` directory by specifying their paths in `train_enformer/config.py`.
 
 ---
-
-## ⚙️ Environment Setup
-To run the codes in finetuning_enformer, refer to the [`environment_setup`](./environment_setup) directory for installation and environment configuration instructions.
   
 ## 🚀 Running Experiments
 First, download
