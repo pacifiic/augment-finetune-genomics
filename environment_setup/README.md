@@ -38,6 +38,3 @@ pip install peft==0.14.0
 pip install enformer-pytorch==0.8.8
 pip install transformers==4.45.2
 ```
-
----
-```
