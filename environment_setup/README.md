@@ -22,7 +22,7 @@ pip install -r ./pip_requirements.txt
 ```
 
 > ⚠️ Note: During this step, some dependencies may fail to install due to version conflicts or compatibility issues between packages.  
-> If that happens, continue with the next step and install the necessary packages individually.
+> This is perfectly fine; you can move on to Step 3 without installing them.
 
 ---
 
