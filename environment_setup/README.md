@@ -40,12 +40,4 @@ pip install transformers==4.45.2
 ```
 
 ---
-
-### ✅ Summary
-
-These steps ensure your environment is correctly configured for running **Enformer-based fine-tuning with LoRA and DeepSpeed**.  
-If installation errors persist, try upgrading `pip` and re-running the commands:
-
-```bash
-pip install --upgrade pip
 ```
