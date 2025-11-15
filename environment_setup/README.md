@@ -1,6 +1,6 @@
 ## 🧩 Environment Setup
 
-To set up your environment, follow the steps below. We have checked that going through Steps 1–3 in order successfully reproduces the environment.
+To set up your environment, follow the steps below. We have checked that going through Steps 1–3 in order successfully reproduces the software environment.
 
 ---
 
