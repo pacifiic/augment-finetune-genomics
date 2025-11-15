@@ -24,7 +24,7 @@ Scripts:
 - `/data_preprocessing/1.preparing_real_sequences/1.vcf_to_fasta.py`
 - `/data_preprocessing/1.preparing_real_sequences/3.fasta_to_vector.py`
 
-### 2. Prepare Virtual (Simulated) Sequences
+### 2. Prepare Virtual (Synthetic) Sequences
 Scripts:
 - `/data_preprocessing/2.preparing_virtual_sequences/7.vcf_to_fasta.py`
 - `/data_preprocessing/2.preparing_virtual_sequences/9.fasta_to_vector.py`
