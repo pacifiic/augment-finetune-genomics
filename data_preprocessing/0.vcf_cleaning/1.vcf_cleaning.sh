@@ -5,9 +5,6 @@
 # VCFtools (0.1.17)
 # bcftools 1.6
 # vt version(2015.11.10) build(1) Channel(bioconda)
-wget https://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/hg19.fa.gz
-gunzip hg19.fa.gz
-faidx -x hg19.fa
 wget https://ftp.ebi.ac.uk/biostudies/fire/E-GEUV-/001/E-GEUV-1/Files/E-GEUV-1/genotypes/GEUVADIS.chr22.PH1PH2_465.IMPFRQFILT_BIALLELIC_PH.annotv2.genotypes.vcf.gz
 zcat GEUVADIS.chr22.PH1PH2_465.IMPFRQFILT_BIALLELIC_PH.annotv2.genotypes.vcf.gz \
   | awk '{
