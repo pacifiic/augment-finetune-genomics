@@ -1,7 +1,6 @@
 # 🧩 Environment: VCF Cleaning & FASTA Generation
 
-This environment is designed specifically to support all scripts involved in **VCF cleaning** and **FASTA sequence generation** for both real and synthetic individuals.
-
+>This environment is designed specifically to support all scripts involved in **VCF cleaning** and **FASTA sequence generation** for both real and synthetic individuals.
 The Conda environment defined in **`vcf_cleaning.yml`** provides all necessary tools (e.g., `bcftools`, `htslib`, Python packages) to run the preprocessing pipeline reliably.
 
 ---
