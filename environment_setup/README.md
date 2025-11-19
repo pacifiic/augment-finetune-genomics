@@ -1,40 +1,81 @@
-## 🧩 Environment Setup
+# 🧩 Environment Overview
 
-To set up your environment, follow the steps below. We have checked that going through Steps 1–3 in order successfully reproduces the software environment.
-
----
-
-### 1. Create the Conda Environment
-
-```bash
-conda env create -f /tmp/pytorch_enformer.yml -n pytorch_enformer
-conda activate pytorch_enformer
-```
-
-This command creates a new Conda environment named **`pytorch_enformer`** using the specified YAML file.
+This directory contains multiple Conda environments used across the full data-processing and Enformer fine-tuning pipeline.  
+Each subdirectory includes its own detailed README explaining installation and usage.
 
 ---
 
-### 2. Install Required Packages
+## 📁 Available Environments
 
-```bash
-pip install -r ./pip_requirements.txt
-```
+### **1. `env_vcf_cleaning/`**
+Environment for:
 
-> ⚠️ Note: During this step, some dependencies may fail to install due to version conflicts or compatibility issues between packages.  
-> This is perfectly fine; you can move on to Step 3 without installing them.
+- Cleaning and preprocessing VCF files  
+- Converting cleaned VCFs into haplotype-specific FASTA sequences  
+  (for both **real** and **synthetic** individuals)
+
+This environment supports scripts such as:
+
+- `data_preprocessing/0.vcf_cleaning/1.vcf_cleaning.sh`
+- `data_preprocessing/1.preparing_real_sequences/1.vcf_to_fasta.py`
+- `data_preprocessing/2.preparing_virtual_sequences/7.vcf_to_fasta.py`
+
+See the directory-specific README for details.
 
 ---
 
-### 3. Manually Install Key Packages
+### **2. `env_finetuning_enformer/`**
+Environment for:
 
-After completing the above steps, manually install the following packages to ensure proper compatibility:
+- Running all scripts in `finetuning_enformer/`
+- Running vectorization utilities:  
+  - `data_preprocessing/1.preparing_real_sequences/3.fasta_to_vector.py`  
+  - `data_preprocessing/2.preparing_virtual_sequences/9.fasta_to_vector.py`  
 
-```bash
-pip install deepspeed==0.15.1
-pip install pandas==2.2.2
-pip install scipy==1.13.1
-pip install peft==0.14.0
-pip install enformer-pytorch==0.8.8
-pip install transformers==4.45.2
-```
+Includes PyTorch Enformer, LoRA (PEFT), DeepSpeed, Transformers, etc.  
+Detailed installation steps are provided in the subdirectory README.
+
+---
+
+## 🧬 sim1000G Environment (R)
+
+Synthetic individuals were generated using **sim1000G**, executed separately because the R environment required only minimal dependencies.
+
+- **sim1000G version:**  
+  Downloaded from CRAN Archive:  
+  https://cran.r-project.org/src/contrib/Archive/sim1000G/sim1000G_1.40.tar.gz  
+
+- **R session used:**
+  ```
+  R version 4.5.1 (2025-06-13) -- "Great Square Root"
+  Platform: x86_64-conda-linux-gnu
+  ```
+
+- **Script:**  
+  `data_preprocessing/2.preparing_virtual_sequences/1.run_sim1000g.r`
+
+Since this step relies on base R + sim1000G only, we do not maintain a dedicated Conda environment here; simply installing sim1000G in R 4.5.1 was sufficient.
+
+---
+
+## 🧪 PrediXcan & AlphaGenome
+
+PrediXcan and AlphaGenome are used as external baseline models.  
+Their installation and usage are best handled via the official repositories:
+
+- **PrediXcan:** https://github.com/hakyimlab/MetaXcan  
+- **AlphaGenome:** https://github.com/google-deepmind/alphagenome  
+
+Each provides its own environment setup instructions, so they are not bundled here.
+
+---
+
+## ✔️ Summary
+
+- This directory only provides **two primary Conda environments**:
+  - `env_vcf_cleaning`: VCF → FASTA preprocessing
+  - `env_finetuning_enformer`: vectorization + Enformer fine-tuning
+
+- The synthetic population generation (sim1000G) was run in a lightweight R environment, not a Conda-managed one.
+
+- External tools such as PrediXcan and AlphaGenome rely on their official installation guides.

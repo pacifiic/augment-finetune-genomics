@@ -1,0 +1,31 @@
+name: vcf_cleaning
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.7
+  - pip
+
+  # --- VCF/FASTA Tools (glibc-safe old versions) ---
+  - bcftools=1.6
+  - samtools=1.5
+  - htslib=1.6
+  - vcftools=0.1.16
+  - vt=2015.11.10
+
+  # --- System libs (glibc-safe versions) ---
+  - zlib=1.2.11
+  - bzip2=1.0.8
+  - xz
+  - curl
+  - wget
+
+  # --- Python packages needed for your code ---
+  - pyfaidx
+  - pandas=1.3.*
+  - numpy=1.21.*
+
+  - pip:
+      - pyfaidx==0.7.2
