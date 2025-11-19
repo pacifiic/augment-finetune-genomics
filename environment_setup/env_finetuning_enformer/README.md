@@ -1,6 +1,10 @@
 ## 🧩 Environment Setup
 
-This Conda environment is required to run all scripts located in: **finetuning_enformer/**, **data_preprocessing/1.preparing_real_sequences/3.fasta_to_vector.py**, **data_preprocessing/2.preparing_virtual_sequences/9.fasta_to_vector.py**
+
+This Conda environment is required to run all scripts located in:
+`finetuning_enformer/`, 
+`data_preprocessing/1.preparing_real_sequences/3.fasta_to_vector.py`, 
+`data_preprocessing/2.preparing_virtual_sequences/9.fasta_to_vector.py`
 These scripts rely on PyTorch Enformer, LoRA-based fine-tuning, DeepSpeed, and vectorization utilities that require a consistent and reproducible software environment.
 We have verified that following Steps 1–3 in sequence successfully reconstructs this environment.
 ---
