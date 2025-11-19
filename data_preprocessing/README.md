@@ -66,8 +66,7 @@ These steps:
 After preparing the finalized real haplotype FASTA sequences:
 
 ```
-data_preprocessing/1.preparing_real_sequences
-                   3.fasta_to_vector.py
+data_preprocessing/1.preparing_real_sequences/3.fasta_to_vector.py
 ```
 
 This generates the real-individual embedding vectors used by `finetuning_enformer`.
@@ -80,15 +79,14 @@ The following preprocessing steps were used in the original study to generate ps
 However, **all resulting files are already included under `data/`**, so these scripts do *not* need to be executed again:
 
 ```
-data_preprocessing/1.preparing_real_sequences
-                   4.make_beta_params.py
+data_preprocessing/1.preparing_real_sequences/4.make_beta_params.py
 
-data_preprocessing/2.preparing_virtual_sequences
-                   3.preprocessing_before_prediction.py
-                   4.PrediXcan.sh
-                   5.preprocessing_after_prediction.py
-                   6.merge_prediction_out.py
-                   10.make_beta_params.py
+data_preprocessing/2.preparing_virtual_sequences/
+    3.preprocessing_before_prediction.py
+    4.PrediXcan.sh
+    5.preprocessing_after_prediction.py
+    6.merge_prediction_out.py
+    10.make_beta_params.py
 ```
 
 These scripts were part of the full synthetic-data augmentation pipeline involving PrediXcan pseudo-labeling.  
