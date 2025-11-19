@@ -27,6 +27,10 @@ data_preprocessing/2.preparing_virtual_sequences/
 > You do *not* need to run these scripts yourself unless you want to regenerate the synthetic genomes.  
 > The identical final FASTA sequences are already available on Zenodo.
 
+> 🧪 **Environment requirement:**  
+> Scripts that convert VCFs to FASTA (`7.vcf_to_fasta.py`) require the  
+> **`environment_setup/env_vcf_cleaning`** Conda environment.
+
 ### ➤ Vectorization required before fine-tuning
 To use the synthetic sequences for Enformer fine-tuning, convert them to embedding vectors via:
 
@@ -34,7 +38,11 @@ To use the synthetic sequences for Enformer fine-tuning, convert them to embeddi
 data_preprocessing/2.preparing_virtual_sequences/9.fasta_to_vector.py
 ```
 
-This produces vectors ready for input to the training pipeline.
+This produces PyTorch vector files (`torch.save`) ready for input to the training pipeline.
+
+> 🧪 **Environment requirement:**  
+> The vectorization script (`9.fasta_to_vector.py`) must be run inside  
+> **`environment_setup/env_finetuning_enformer`**.
 
 ---
 
@@ -62,6 +70,10 @@ These steps:
 3. Substitute individual-specific variants to produce personalized haplotypes  
 4. Normalize FASTA length to 196,608 bp
 
+> 🧪 **Environment requirement:**  
+> Both `1.vcf_cleaning.sh` and `1.vcf_to_fasta.py` require the  
+> **`environment_setup/env_vcf_cleaning`** Conda environment.
+
 ### ➤ Vectorization required before fine-tuning
 After preparing the finalized real haplotype FASTA sequences:
 
@@ -70,6 +82,10 @@ data_preprocessing/1.preparing_real_sequences/3.fasta_to_vector.py
 ```
 
 This generates the real-individual embedding vectors used by `finetuning_enformer`.
+
+> 🧪 **Environment requirement:**  
+> Run `3.fasta_to_vector.py` using  
+> **`environment_setup/env_finetuning_enformer`**.
 
 ---
 
@@ -99,8 +115,8 @@ You may directly use the prepared datasets from the repository.
 | Task | Real Data | Synthetic Data |
 |------|-----------|----------------|
 | FASTA generation | Must run scripts locally | **Download directly from Zenodo** (recommended) |
-| Preprocessing scripts needed | `vcf_cleaning.sh`, `vcf_to_fasta.py`, `adjust_fasta_length.py` | None (unless regenerating) |
-| Vectorization required | `3.fasta_to_vector.py` | `9.fasta_to_vector.py` |
+| Required environment | `env_vcf_cleaning` | `env_vcf_cleaning` (only if regenerating) |
+| Vectorization required | `3.fasta_to_vector.py` (env: `env_finetuning_enformer`) | `9.fasta_to_vector.py` (env: `env_finetuning_enformer`) |
 | Ready-to-use files in `data/` | Beta parameters, pseudo-labels | Beta parameters, PrediXcan outputs |
 
 After running the required vectorization steps, the outputs can be directly consumed by the fine-tuning scripts inside:
