@@ -1,7 +1,7 @@
 ## 🧩 Environment Setup
 
 
-This Conda environment is required to run all scripts located in:
+>This Conda environment is required to run all scripts located in:
 `finetuning_enformer/`, 
 `data_preprocessing/1.preparing_real_sequences/3.fasta_to_vector.py`, 
 `data_preprocessing/2.preparing_virtual_sequences/9.fasta_to_vector.py`
