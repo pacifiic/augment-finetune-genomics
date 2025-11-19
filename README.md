@@ -132,4 +132,5 @@ Licensed under the MIT License.
 Source: https://github.com/ni-lab/personalized-expression-benchmark
 ```
 
-All sequences used in this study were derived from [E-GEUV-1](https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-GEUV-1). The synthetic genomes generated using sim1000G were also simulated based on this dataset as input.
+All real individual genomic sequences used in this study were reconstructed locally from [E-GEUV-1](https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-GEUV-1) and are not redistributed in this repository.
+Synthetic genomes were generated using sim1000G, which simulates haplotypes based on population-level genetic variation and does not reproduce any individual's real genome.
