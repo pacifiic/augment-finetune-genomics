@@ -29,7 +29,7 @@ augment-finetune-genomics/
 │
 ├── finetuning_enformer/               # Enformer fine-tuning implementation (LoRA + DeepSpeed)
 │
-├── evaluation/                        # Test-set evaluation scripts and utilities
+├── evaluate_testset.py                # The test-set evaluation script
 │
 └── data/                              # Preprocessed datasets required for training
 ```
