@@ -14,15 +14,54 @@ This project introduces a **hybrid fine-tuning framework** that integrates real 
 The method leverages **LoRA-based adapters** for parameter-efficient fine-tuning of Enformer models and uses population-level genetic diversity simulated via `sim1000G` to enhance cross-individual generalization.
 
 ---
+## 📁 Project Structure
+A high-level overview of the repository structure is shown below:
+```bash
+augment-finetune-genomics/
+├── environment_setup/                 # Conda environments for preprocessing & fine-tuning
+│   ├── env_vcf_cleaning/
+│   └── env_finetuning_enformer/
+│
+├── data_preprocessing/                # All scripts to reproduce real & synthetic datasets
+│   ├── 0.vcf_cleaning/
+│   ├── 1.preparing_real_sequences/
+│   └── 2.preparing_virtual_sequences/
+│
+├── finetuning_enformer/               # Enformer fine-tuning implementation (LoRA + DeepSpeed)
+│
+├── evaluation/                        # Test-set evaluation scripts and utilities
+│
+└── data/                              # Preprocessed datasets required for training
+```
+
+This structure provides a clear separation of preprocessing, training, and evaluation components, allowing users to reproduce all results end-to-end.
+
+---
 ## ⚙️ Environment Setup
 To run the codes in finetuning_enformer, refer to the [`environment_setup`](./environment_setup) directory for installation and environment configuration instructions.
 
 ---
 ## 🧬 Data Preparation
 
-All datasets used in this study can be reproduced by following the scripts in the [`data_preprocessing`](./data_preprocessing) directory.
+All datasets used in this study—both real and synthetic—can be reproduced using the scripts in the
+[`data_preprocessing`](./data_preprocessing) directory.
+A detailed step-by-step guide is provided in **`data_preprocessing/README.md`**, and users should consult that document when regenerating the dataset.
 
-You can simply use the existing files in the `data/` directory by specifying their paths in `train_enformer/config.py`.
+For convenience, many intermediate files and final processed outputs are already included in the `data/` directory.
+You may simply point the fields in `train_enformer/config.py` to the corresponding files in `data/` without rerunning the full preprocessing pipeline.
+
+- **Synthetic sequences**: fully processed haplotype FASTA files can be downloaded from Zenodo  
+  https://zenodo.org/records/17637352  
+  After downloading, convert them into embedding vectors using  
+  `data_preprocessing/2.preparing_virtual_sequences/9.fasta_to_vector.py`.
+
+- **Real sequences**: must be generated locally (cannot be redistributed).  
+  Use the scripts in  
+  `data_preprocessing/0.vcf_cleaning/` and  
+  `data_preprocessing/1.preparing_real_sequences/`  
+  to create personalized FASTA sequences, then convert them into embeddings with  
+  `data_preprocessing/1.preparing_real_sequences/3.fasta_to_vector.py`.
+
 
 ---
   

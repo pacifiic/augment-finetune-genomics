@@ -1,6 +1,6 @@
 # 🧩 Environment Overview
 
->This directory contains multiple Conda environments used across the full data-processing and Enformer fine-tuning pipeline.  
+This directory contains multiple Conda environments used across the full data-processing and Enformer fine-tuning pipeline.  
 Each subdirectory includes its own detailed README explaining installation and usage.
 
 ---
