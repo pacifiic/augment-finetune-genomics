@@ -1,5 +1,6 @@
 """
 For perfect reproducibility, it is recommended to run using a single NVIDIA H100 GPU.
+After specifying the input and output directories in lines 65 and 66, you can run the script using 'python 3.fasta_to_vector.py.'
 """
 # Copyright (c) 2018 Kipoi team
 # Licensed under the MIT License.

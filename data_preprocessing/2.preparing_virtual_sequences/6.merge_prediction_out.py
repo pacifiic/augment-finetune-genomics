@@ -1,3 +1,7 @@
+"""
+After specifying the input and output directories in lines 8 and 9,
+you can run the script using  'python3 6.merge_prediction_out.py'
+"""
 import os
 import pandas as pd
 

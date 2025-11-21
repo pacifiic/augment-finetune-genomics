@@ -1,5 +1,6 @@
 """
-python3 8.adjust_fasta_length.py /data/11.samples.txt
+After specifying the input and output directories in lines 44 and 45,
+you can run the script using  'python3 8.adjust_fasta_length.py /data/11.samples.txt'
 """
 import os
 import sys

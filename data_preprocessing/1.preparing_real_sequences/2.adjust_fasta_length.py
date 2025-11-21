@@ -1,5 +1,6 @@
 """
-python3 2.adjust_fasta_length.py /data/5.individual_id_sorted.txt
+After specifying the input and output directories in lines 51 and 52,
+you can run the script using  'python3 2.adjust_fasta_length.py /data/5.individual_id_sorted.txt'
 """
 import os
 import sys

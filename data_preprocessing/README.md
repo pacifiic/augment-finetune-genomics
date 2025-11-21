@@ -2,6 +2,7 @@
 
 This repository provides all scripts necessary to reproduce both **real individual FASTA sequences** and **simulated (synthetic) FASTA sequences**, which are used as inputs to the Enformer fine-tuning pipeline.  
 You may either **recreate the datasets from scratch** or **use the ready-made files** available in the `data/` directory and on Zenodo.
+All python scripts in this directory include usage examples and option descriptions in their file headers. Please make sure to read the header (comment section) before running any script for reproducibility.
 
 ---
 

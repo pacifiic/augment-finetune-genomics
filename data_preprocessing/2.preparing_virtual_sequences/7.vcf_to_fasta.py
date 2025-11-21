@@ -5,6 +5,7 @@
 # This implementation was developed with reference to
 # https://github.com/ni-lab/personalized-expression-benchmark/blob/main/consensus/make_consensus_enformer.py
 """
+After specifying the input directory in line 25, you can run the script using below lines.
 python3 7.vcf_to_fasta.py ref_fasta_dir  \
         /data/1.chr22_genes_list.txt     \
         /data/11.samples.txt \

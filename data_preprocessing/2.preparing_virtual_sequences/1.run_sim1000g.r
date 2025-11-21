@@ -1,10 +1,10 @@
 #!/usr/bin/env Rscript
+#After specifying the input and output directories in lines 7, 10, 11 and 75, you can run the script using  'Rscript 1.run_sim1000g.r'
 library(sim1000G)
 library(data.table)
 
 simulate_and_save_vcf <- function(filename, numeric_chrom,
-                                  input_dir = "/path/to/0.vcf_preprocessing.sh/output_dir",
-                                  output_dir = "/path/to/output_dir", seed = 42) {
+                                  input_dir = "/path/to/0.vcf_preprocessing.sh/output_dir", output_dir = "/path/to/output_dir", seed = 42) {
   if (!is.null(seed)) set.seed(seed)
   input_vcf_path  <- file.path(input_dir, filename)
   gene_id         <- sub("\\.training_samples\\.vcf\\.gz$", "", filename)
