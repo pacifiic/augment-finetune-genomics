@@ -1,3 +1,7 @@
+"""
+After specifying the input and output directories in lines 7-10,
+you can run the script using  'python 2.filtering_gene_expression_file.py'
+"""
 import pandas as pd
 
 expr_file = "/data/13.geuvadis_peer_normalized.csv"

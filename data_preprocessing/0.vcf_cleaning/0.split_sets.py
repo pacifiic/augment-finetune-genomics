@@ -1,3 +1,7 @@
+"""
+After specifying the input and output directories in lines 8 & 22-24,
+you can run the script using  'python3 0.split_sets.py'
+"""
 import pandas as pd
 import numpy as np
 
